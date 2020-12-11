@@ -15,6 +15,10 @@ describe('Core TicTacToe tests', () => {
     it('Starts with X as the turn player', () => {
       expect(game.getTurnPlayer()).toBe('X')
     })
+
+    it("Reports the game status as ongoing", () => {
+      expect(game.playStatus()).toBe("Ongoing - X's turn")
+    })
   })
 
   describe('Playing', () => {
@@ -42,6 +46,39 @@ describe('Core TicTacToe tests', () => {
         ['', 'X', 'O'],
         ['', '', '']
       ])
+    })
+  })
+
+  describe('Victory', () => {
+    it('Detects a first row win', () => {
+      const game = new TicTacToe()
+      game.addMarker({ row: 2, col: 2 })
+      game.addMarker({ row: 1, col: 1 })
+      game.addMarker({ row: 3, col: 1 })
+      game.addMarker({ row: 1, col: 2 })
+      game.addMarker({ row: 3, col: 3 })
+      game.addMarker({ row: 1, col: 3 })
+      expect(game.getBoard()).toEqual([
+        ['O', 'O', 'O'],
+        ['', 'X', ''],
+        ['X', '', 'X']
+      ])
+      expect(game.playStatus()).toBe('Finished - O is the winner!')
+    })
+
+    it('Detects a diagonal win', () => {
+      const game = new TicTacToe()
+      game.addMarker({ row: 2, col: 2 })
+      game.addMarker({ row: 1, col: 3 })
+      game.addMarker({ row: 3, col: 3 })
+      game.addMarker({ row: 1, col: 2 })
+      game.addMarker({ row: 1, col: 1 })
+      expect(game.getBoard()).toEqual([
+        ['X', 'O', 'O'],
+        ['', 'X', ''],
+        ['', '', 'X']
+      ])
+      expect(game.playStatus()).toBe('Finished - X is the winner!')
     })
 
   })

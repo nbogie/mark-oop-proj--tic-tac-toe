@@ -1,4 +1,11 @@
-export class TicTacToe {
+interface ITicTacToe {
+  addMarker(position: BoardPosition): void
+  getBoard(): Board
+  playStatus(): string
+  // playStatus(): { isFinished: boolean, turnPlayer?: Marker, winner?: Marker }
+}
+
+export class TicTacToe implements TicTacToe {
   private board: Board
 
   constructor() {
@@ -8,6 +15,50 @@ export class TicTacToe {
       [...emptyRow],
       [...emptyRow]
     ]
+  }
+
+  private allEqualTo(marker: Marker, positions: BoardPosition[]): boolean {
+    return positions.every(position => (
+      this.readCell(position) === marker
+    ))
+  }
+
+  private findWinner(): Marker | undefined {
+    const rowWins = [
+      [[1, 1], [1, 2], [1, 3]],
+      [[2, 1], [2, 2], [2, 3]],
+      [[3, 1], [3, 2], [3, 3]]
+    ]
+
+    const colWins = [
+      [[1, 1], [2, 1], [3, 1]],
+      [[1, 2], [2, 2], [3, 2]],
+      [[1, 3], [2, 3], [3, 3]]
+    ]
+
+    const diagWins = [
+      [[1, 1], [2, 2], [3, 3]],
+      [[1, 3], [2, 2], [3, 1]]
+    ]
+
+    const winCombinations = [
+      ...rowWins,
+      ...colWins,
+      ...diagWins
+    ]
+
+    for (let coordArr of winCombinations) {
+      const boardPositions = coordArr.map(([row, col]) => ({ row, col }))
+      const xWins = this.allEqualTo('X', boardPositions)
+      const oWins = this.allEqualTo('O', boardPositions)
+      if (xWins) {
+        return 'X'
+      } else if (oWins) {
+        return 'O'
+      }
+    }
+
+    return undefined
   }
 
   public addMarker({ row, col }: BoardPosition): void {
@@ -35,6 +86,15 @@ export class TicTacToe {
         return acc + markersPlayed.length
       }
     , 0)
+  }
+
+  public playStatus(): string {
+    const winner = this.findWinner()
+    if (winner) {
+      return `Finished - ${winner} is the winner!`
+    } else {
+      return `Ongoing - ${this.getTurnPlayer()}'s turn`
+    }
   }
 
   private readCell({ row, col }: BoardPosition): Cell {
