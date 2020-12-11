@@ -5,7 +5,7 @@ interface ITicTacToe {
   // playStatus(): { isFinished: boolean, turnPlayer?: Marker, winner?: Marker }
 }
 
-export class TicTacToe implements TicTacToe {
+export class TicTacToe implements ITicTacToe {
   private board: Board
 
   constructor() {
