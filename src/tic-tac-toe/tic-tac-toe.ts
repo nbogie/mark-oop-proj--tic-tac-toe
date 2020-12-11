@@ -6,10 +6,10 @@ interface ITicTacToe {
 }
 
 export class TicTacToe implements ITicTacToe {
-  private board: Board
+  board: Board
 
   constructor() {
-    const emptyRow: Row = Array(3).fill('')
+    const emptyRow: Row = ['', '', '']
     this.board = [
       [...emptyRow],
       [...emptyRow],
@@ -17,13 +17,13 @@ export class TicTacToe implements ITicTacToe {
     ]
   }
 
-  private allEqualTo(marker: Marker, positions: BoardPosition[]): boolean {
+  allEqualTo(marker: Marker, positions: BoardPosition[]): boolean {
     return positions.every(position => (
       this.readCell(position) === marker
     ))
   }
 
-  private findWinner(): Marker | undefined {
+  findWinner(): Marker | undefined {
     const rowWins = [
       [[1, 1], [1, 2], [1, 3]],
       [[2, 1], [2, 2], [2, 3]],
@@ -36,15 +36,9 @@ export class TicTacToe implements ITicTacToe {
       [[1, 3], [2, 3], [3, 3]]
     ]
 
-    const diagWins = [
-      [[1, 1], [2, 2], [3, 3]],
-      [[1, 3], [2, 2], [3, 1]]
-    ]
-
     const winCombinations = [
       ...rowWins,
-      ...colWins,
-      ...diagWins
+      ...colWins
     ]
 
     for (let coordArr of winCombinations) {
@@ -61,7 +55,7 @@ export class TicTacToe implements ITicTacToe {
     return undefined
   }
 
-  public addMarker({ row, col }: BoardPosition): void {
+  addMarker({ row, col }: BoardPosition): void {
     if (this.readCell({ row, col }) === '') {
       this.writeCell({ row, col }, this.getTurnPlayer())
     } else {
@@ -69,17 +63,17 @@ export class TicTacToe implements ITicTacToe {
     }
   }
 
-  public getBoard(): Board {
+  getBoard(): Board {
     return this.board
   }
 
-  public getTurnPlayer(): Marker {
+  getTurnPlayer(): Marker {
     const isEvenTurn = this.getTurnCount() % 2 === 0
 
     return isEvenTurn ? 'X' : 'O'
   }
 
-  public getTurnCount(): number {
+  getTurnCount(): number {
     return this.board.reduce(
       (acc, row) => {
         const markersPlayed = row.filter(cell => ['X', 'O'].includes(cell))
@@ -88,7 +82,7 @@ export class TicTacToe implements ITicTacToe {
     , 0)
   }
 
-  public playStatus(): string {
+  playStatus(): string {
     const winner = this.findWinner()
     if (winner) {
       return `Finished - ${winner} is the winner!`
@@ -97,12 +91,12 @@ export class TicTacToe implements ITicTacToe {
     }
   }
 
-  private readCell({ row, col }: BoardPosition): Cell {
+  readCell({ row, col }: BoardPosition): Cell {
     // subtract one as row and col are not zero-based
     return this.board[row - 1][col - 1]
   }
 
-  public writeCell({ row, col }: BoardPosition, marker: Marker): void {
+  writeCell({ row, col }: BoardPosition, marker: Marker): void {
     this.board[row - 1][col - 1] = marker
   }
 }
@@ -110,10 +104,12 @@ export class TicTacToe implements ITicTacToe {
 type Marker = 'X' | 'O'
 type Cell = '' | Marker
 
-type Row = Cell[]
+type Row = [Cell, Cell, Cell]
 type Board = [Row, Row, Row]
 
 interface BoardPosition {
+  /* Non-zero based row number */
   row: number,
+  /* Non-zero based column number */
   col: number
 }
