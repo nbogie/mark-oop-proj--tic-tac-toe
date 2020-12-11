@@ -1,6 +1,6 @@
 import { TicTacToe } from "./tic-tac-toe"
 
-describe('Tic Tac Toe game', () => {
+describe('Core TicTacToe tests', () => {
   describe('Initialising', () => {
     const game = new TicTacToe()
 

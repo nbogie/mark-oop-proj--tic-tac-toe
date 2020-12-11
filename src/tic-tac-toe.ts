@@ -10,6 +10,14 @@ export class TicTacToe {
     ]
   }
 
+  public addMarker({ row, col }: BoardPosition): void {
+    if (this.readCell({ row, col }) === '') {
+      this.writeCell({ row, col }, this.getTurnPlayer())
+    } else {
+      console.log("There's already a marker there - try placing somewhere else!")
+    }
+  }
+
   public getBoard(): Board {
     return this.board
   }
@@ -28,6 +36,15 @@ export class TicTacToe {
       }
     , 0)
   }
+
+  private readCell({ row, col }: BoardPosition): Cell {
+    // subtract one as row and col are not zero-based
+    return this.board[row - 1][col - 1]
+  }
+
+  public writeCell({ row, col }: BoardPosition, marker: Marker): void {
+    this.board[row - 1][col - 1] = marker
+  }
 }
 
 type Marker = 'X' | 'O'
@@ -35,3 +52,8 @@ type Cell = '' | Marker
 
 type Row = Cell[]
 type Board = [Row, Row, Row]
+
+interface BoardPosition {
+  row: number,
+  col: number
+}
