@@ -1,21 +1,5 @@
 # Tic Tac Toe
 
-## Setup
-Clone repository
-```bash
-git clone git@github.com:WeAreAcademy/mark-oop-proj--tic-tac-toe.git
-```
-
-Change into directory
-```bash
-cd mark-oop-proj--tic-tac-toe
-```
-
-Install dependencies
-```bash
-yarn
-```
-
 ## Context
 
 You work for a game development company.
@@ -51,5 +35,5 @@ You may use any external helper, library, or tool that you feel would benefit yo
 
 Title | Description | Goal | Estimated difficulty
 --- | --- | --- | ---
-**Diagonal wins** | Our Tic Tac Toe game needs to be able to detect when any valid win happens (rows, columns and diagonals). <br /> There is one test written for this, `'Detects a diagonal win'`, but it is currently failing. | Implement a fix so that the game detects diagonal wins and the test passes. | ⭐️
-**Print board** | To play the game, users need to be able to check the current board. <br /> The `.getBoard()` method returns the array representation of the board, but our players (with no coding experience) are finding it hard to understand what this means. | Complete the `.printBoard()` method to achieve this.  | ⭐️⭐️
+**Diagonal wins** | Our Tic Tac Toe game needs to be able to detect when any valid win happens (rows, columns and diagonals). <br /><br /> There is one test written for this, `'Detects a diagonal win'`, but it is currently failing. | Implement a fix so that the game detects diagonal wins and the test passes. | ⭐️
+**Print board** | To play the game, users need to be able to check the current board. <br /><br /> The `.getBoard()` method returns the array representation of the board, but our players (with no coding experience) are finding it hard to understand what this means. <br /><br /> It seems that the previous maintainer left a related TODO, under `.printBoard()`. | Complete the `.printBoard()` method to achieve this. | ⭐️⭐

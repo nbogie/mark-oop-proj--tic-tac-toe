@@ -43,17 +43,32 @@ game.getStatus()
 // => "Finished - X is the winner!"
 ```
 
-## Usage
-To play locally, run a `ts-node` REPL and load the file.
 
-*Run a `ts-node` REPL*
+## Setup
+Clone repository
+```bash
+git clone git@github.com:WeAreAcademy/mark-oop-proj--tic-tac-toe.git
+```
+
+Change into directory
+```bash
+cd mark-oop-proj--tic-tac-toe
+```
+
+Install dependencies
+```bash
+yarn
+```
+
+### To play locally
+Open `ts-node` REPL (prequisite: global installation of `ts-node`; do with `npm install -g ts-node`)
 ```bash
 ts-node
 ```
 
-*Load the game code into the REPL*
-```
-> .load src/tic-tac-toe/tic-tac-toe.ts
+In `ts-node` REPL, load the game file
+```bash
+> .load src/tic-tac-toe.ts
 ```
 
-*You're ready to play!*
+*Ready to play in the TS console!*
