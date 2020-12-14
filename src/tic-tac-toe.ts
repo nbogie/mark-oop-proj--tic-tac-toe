@@ -15,6 +15,12 @@ interface ITicTacToe {
   getBoard(): Board
 
   /**
+   * A command that prints a human-readable representation of the board's current state to the console.
+   */
+  printBoard(): void
+
+
+  /**
    * A helper query to describe the current status of the Tic Tac Toe game.
    * 
    * It returns a string which either announces the current winner of the game, or specifies that the game is ongoing (and states the current turn player).
@@ -61,9 +67,9 @@ class TicTacToe implements ITicTacToe {
     }
   }
 
-  // TODO: make it easier for players to view the board
   printBoard(): void {
     // log an ASCII representation of the board
+    console.log(this.boardString());
   }
 
   /**
@@ -108,10 +114,15 @@ class TicTacToe implements ITicTacToe {
       [[1, 2], [2, 2], [3, 2]],
       [[1, 3], [2, 3], [3, 3]]
     ]
+    const diagonalWins = [
+      [[1, 1], [2, 2], [3, 3],],
+      [[3, 1], [2, 2], [1, 3]],
+    ];
 
     const winCombinations = [
       ...rowWins,
-      ...colWins
+      ...colWins,
+      ...diagonalWins
     ]
 
     for (let coordArr of winCombinations) {
@@ -139,7 +150,7 @@ class TicTacToe implements ITicTacToe {
         const markersPlayed = row.filter(cell => ['X', 'O'].includes(cell))
         return acc + markersPlayed.length
       }
-    , 0)
+      , 0)
   }
 
   /**

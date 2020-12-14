@@ -23,7 +23,7 @@ describe('Core TicTacToe tests', () => {
 
   describe('Playing', () => {
     const game = new TicTacToe()
-    
+
     it('Can add markers as specified', () => {
       game.addMarker({ row: 2, col: 2 })
       expect(game.getBoard()).toEqual([
@@ -56,6 +56,22 @@ describe('Core TicTacToe tests', () => {
   })
 
   describe('Victory', () => {
+
+    it('Detects a first column win', () => {
+      const game = new TicTacToe()
+      game.addMarker({ row: 2, col: 2 });
+      game.addMarker({ row: 1, col: 1 })
+      game.addMarker({ row: 3, col: 2 })
+      game.addMarker({ row: 2, col: 1 })
+      game.addMarker({ row: 1, col: 2 })
+      expect(game.getBoard()).toEqual([
+        ['O', 'X', ''],
+        ['O', 'X', ''],
+        ['', 'X', '']
+      ])
+      expect(game.getStatus()).toBe('Finished - X is the winner!')
+    })
+
     it('Detects a first row win', () => {
       const game = new TicTacToe()
       game.addMarker({ row: 2, col: 2 })
@@ -72,20 +88,37 @@ describe('Core TicTacToe tests', () => {
       expect(game.getStatus()).toBe('Finished - O is the winner!')
     })
 
-    it('Detects a diagonal win', () => {
-      const game = new TicTacToe()
-      game.addMarker({ row: 2, col: 2 })
-      game.addMarker({ row: 1, col: 3 })
-      game.addMarker({ row: 3, col: 3 })
-      game.addMarker({ row: 1, col: 2 })
-      game.addMarker({ row: 1, col: 1 })
+
+
+    it("Detects one diagonal win", () => {
+      const game = new TicTacToe();
+      game.addMarker({ row: 2, col: 2 });
+      game.addMarker({ row: 1, col: 3 });
+      game.addMarker({ row: 3, col: 3 });
+      game.addMarker({ row: 1, col: 2 });
+      game.addMarker({ row: 1, col: 1 });
       expect(game.getBoard()).toEqual([
-        ['X', 'O', 'O'],
-        ['', 'X', ''],
-        ['', '', 'X']
-      ])
-      expect(game.getStatus()).toBe('Finished - X is the winner!')
-    })
+        ["X", "O", "O"],
+        ["", "X", ""],
+        ["", "", "X"],
+      ]);
+      expect(game.getStatus()).toBe("Finished - X is the winner!");
+    });
+    it("Detects other diagonal win", () => {
+      const game = new TicTacToe();
+      game.addMarker({ row: 1, col: 1 });
+      game.addMarker({ row: 1, col: 3 });
+      game.addMarker({ row: 1, col: 2 });
+      game.addMarker({ row: 2, col: 2 });
+      game.addMarker({ row: 2, col: 1 });
+      game.addMarker({ row: 3, col: 1 });
+      expect(game.getBoard()).toEqual([
+        ["X", "X", "O"],
+        ["X", "O", ""],
+        ["O", "", ""],
+      ]);
+      expect(game.getStatus()).toBe("Finished - O is the winner!");
+    });
 
   })
 })
