@@ -136,8 +136,8 @@ class TicTacToe implements ITicTacToe {
   getTurnCount(): number {
     return this.board.reduce(
       (acc, row) => {
-        const markersPlayed = row.filter(cell => ['X', 'O'].includes(cell))
-        return acc + markersPlayed.length
+        const rowMarkerCount = row.filter(cell => ['X', 'O'].includes(cell))
+        return acc + rowMarkerCount.length
       }
     , 0)
   }
