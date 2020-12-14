@@ -1,15 +1,18 @@
-# Tic Tac Toe
+# Academy Project: Tic Tac Toe
+**Module:** Object-oriented programming || **Level:** 1
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
 
 ## Context
 
 You work for a game development company.
 
-You have inherited a Tic Tac Toe codebase, with some tickets to complete on it (a failing test and some feature requests).
+You have inherited a Tic Tac Toe project that was started during a small internal hackathon, which the company would like to polish up.
 
-The software engineer who was working on the codebase previously has left, so you can't ask them questions.
+The software engineer who developed the codebase has left, so you can't ask them questions...
 
-However, there appear to be some helpful files under `/src`:
-1. `README.md`: a brief example of using; and
+... but there appear to be some helpful files left under `/src`:
+1. `INSTRUCTIONS.md`: a brief guide to setup and installation; and
 2. `tic-tac-toe.ts`: the main code and some documentation;
 3. `tic-tac-toe.spec.ts`: some written tests to accompany the code.
 
@@ -35,8 +38,11 @@ You may use any external helper, library, or tool that you feel would benefit yo
 
 **Your deliverable will be commits of code and documentation in response to chosen items.**
 
-Title | Description | Goal | Estimated difficulty | Bonus
---- | --- | --- | --- | ---
-**Diagonal wins** | Our Tic Tac Toe game needs to be able to detect when any valid win happens (rows, columns and diagonals). <br /><br /> There is one test written for this, `'Detects a diagonal win'`, but it is currently failing. | Implement a fix so that the game detects diagonal wins and the test passes. | ⭐️ | There isn't a test for column wins yet - add one (and make sure that it passes) to increase the robustness of our tests
-**Print board** | To play the game, users need to be able to check the current board. <br /><br /> The `.getBoard()` method returns the array representation of the board, but our players (with no coding experience) are finding it hard to understand what this means. <br /><br /> It seems that the previous maintainer left a related TODO, under `.printBoard()`. | Complete the `.printBoard()` method to achieve this. | ⭐️ | Document it in the public interface so that it's easy for others to quickly refer to and use
-**Consistent style** | Your team prefers imperative and object-oriented over functional programming. <br /><br /> Currently, there are some functional methods (`.map`, `.filter`, `.reduce`) scattered throughout the code, which team members are finding hard to understand. | Refactor the code to use imperative programming constructs in place of these | ⭐️⭐️⭐️ | -
+Title | Description | Goal | Estimated difficulty
+--- | --- | --- | ---
+**Testing for column wins** | Our Tic Tac Toe game has a test for a row win, but it doesn't have a test written for a column wins. | Write a test to check that it detects a column win. | ⭐️
+**Diagonal wins** | Our Tic Tac Toe game needs to be able to detect when any valid win happens (rows, columns and diagonals). <br /><br /> There is one test written for this, `'Detects a diagonal win'`, but it is currently being skipped - it fails when it is run. | Implement a fix so that the game detects diagonal wins and the test passes. | ⭐️
+**Print board** | To play the game, users need to be able to check the current board. <br /><br /> The `.getBoard()` method returns the array representation of the board, but our players (with no coding experience) are finding it hard to understand what this means. <br /><br /> It seems that the previous maintainer left a related TODO, under `.printBoard()`, with a previous test (currently skipped). | Complete the `.printBoard()` method to pass the test, and document it in the public interface so that it's easy for others to quickly refer to and use. | ⭐️
+**Status reporting** | Currently, the `.getStatus()` method returns a descriptive string. <br /><br /> A team-mate wants to use the status information, but she is finding it annoying to have to parse the string. | Rewrite `.getStatus()` so that it instead returns an object of type `{ isComplete: boolean, turnPlayer?: Marker, winner?: Marker }`, and make changes to the associated tests | ⭐️⭐️
+**Handle draws** | At the moment, the game only reports 'wins' and 'ongoing' - but Tic Tac Toe often ends in a draw! | Write the tests and code to handle draws in some sensible way | ⭐️⭐️
+**Remove reduce** | Currently, there are a couple of `.reduce` methods scattered throughout the code, which some junior members of your team have found it difficult to maintain or debug. | Refactor the code to replace all `.reduce` calls with imperative programming constructs | ⭐️⭐️⭐️
