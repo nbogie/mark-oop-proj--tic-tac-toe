@@ -165,12 +165,12 @@ class TicTacToe implements ITicTacToe {
    * @returns the number of markers that have been played
    */
   getTurnCount(): number {
-    return this.board.reduce(
-      (acc, row) => {
-        const rowMarkerCount = row.filter(cell => ['X', 'O'].includes(cell))
-        return acc + rowMarkerCount.length
-      }
-      , 0)
+    let total = 0;
+    for (let row of this.board) {
+      const rowMarkerCount = row.filter(cell => ['X', 'O'].includes(cell))
+      total += rowMarkerCount.length
+    }
+    return total;
   }
 
   /**
@@ -200,7 +200,14 @@ class TicTacToe implements ITicTacToe {
    * @returns string, ASCII representation of row
    */
   rowString(rowNo: number): string {
-    return this.board[rowNo - 1].reduce((acc, val) => (acc + (val ? val : ' ') + '|'), '|')
+    let chars = ['|'];
+
+    for (let cellValue of this.board[rowNo - 1]) {
+      chars.push(cellValue ? cellValue : ' ');
+      chars.push('|');
+    }
+
+    return chars.join("");
   }
 
   /**
