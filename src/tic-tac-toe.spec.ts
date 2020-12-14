@@ -12,11 +12,7 @@ describe('Core TicTacToe tests', () => {
       ])
     })
 
-    it('Starts with X as the turn player', () => {
-      expect(game.getTurnPlayer()).toBe('X')
-    })
-
-    it("Reports the game status as ongoing", () => {
+    it("Reports the game status as ongoing and X's turn to begin with", () => {
       expect(game.getStatus()).toBe("Ongoing - X's turn")
     })
   })

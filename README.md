@@ -18,23 +18,25 @@ The software engineer who developed the codebase has left, so you can't ask her 
 
 ## Exercise 1: Newcomer Notes
 
-Your first task is to spend some time with the codebase, forming some observations, questions and ideas about the project and how it currently works (or could/should).
-
 **Your deliverable will be a document named `NEWCOMER_NOTES.md`**.
 
-We expect you to picture yourself as the new project owner, and express yourself as truly as possible, so please feel free to not be shy.
+Your first task is to spend some time with the codebase, forming some observations, questions and ideas about the project and how it currently works (or could/should).
+
+You might find it helpful to check your understanding by considering the following prompts:
+
+1. Can you load a game and play through it? Does it behave as you expect?
+2. The interface lists three methods, but the actual class implementation has many more. What is the purpose of having those?
+3. What is the strategy used for figuring out which player's turn it is?
+4. The code documents 'non-zero based' quite a few times. What does it mean and why do you think this has been done?
+5. What is the job of the `allEqualTo` method?
+
+although your observations and ideas should go beyond these questions!
 
 You can use a succinct writing style, as long as you consider it understandable in the context of team work.
 
 This exercise will help you take ownership of the project, and help us understand your thought process.
 
 ## Exercise 2: Backlog
-
-The time you spend on this exercise should account for **about 75% of the timeframe** that you allocated for yourself (**~2/3 hours**).
-
-As a second exercise, we would like you to complete at least two of the following backlog items, and commit your work.
-
-You may use any external helper, library, or tool that you feel would benefit your work.
 
 **Your deliverable will be commits of code and documentation in response to chosen items.**
 
