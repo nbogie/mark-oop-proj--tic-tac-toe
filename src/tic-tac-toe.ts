@@ -97,6 +97,15 @@ class TicTacToe implements ITicTacToe {
    * @returns a string Marker if there is a winner; undefined otherwise
    */
   findWinner(): Marker | undefined {
+
+    /**
+     * To reduce visual clutter and speed of typing, we're initially storing coordinates in an array form [row, col] rather than the BoardPosition object { row, col } used elsewhere.
+     * 
+     * (We'll convert these to BoardPosition objects later.)
+     * 
+     * We group here the different possible combinations needed to declare victory.
+     */
+
     const rowWins = [
       [[1, 1], [1, 2], [1, 3]],
       [[2, 1], [2, 2], [2, 3]],
