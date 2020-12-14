@@ -19,7 +19,7 @@ interface ITicTacToe {
    * 
    * It returns a string which either announces the current winner of the game, or specifies that the game is ongoing (and states the current turn player).
    */
-  playStatus(): string
+  getStatus(): string
 }
 
 /**
@@ -52,7 +52,7 @@ class TicTacToe implements ITicTacToe {
     return this.board
   }
 
-  playStatus(): string {
+  getStatus(): string {
     const winner = this.findWinner()
     if (winner) {
       return `Finished - ${winner} is the winner!`
@@ -191,3 +191,5 @@ interface BoardPosition {
   /** Non-zero based column number */
   col: number
 }
+
+export default TicTacToe

@@ -1,4 +1,4 @@
-import { TicTacToe } from "./tic-tac-toe"
+import TicTacToe from "./tic-tac-toe"
 
 describe('Core TicTacToe tests', () => {
   describe('Initialising', () => {
@@ -17,7 +17,7 @@ describe('Core TicTacToe tests', () => {
     })
 
     it("Reports the game status as ongoing", () => {
-      expect(game.playStatus()).toBe("Ongoing - X's turn")
+      expect(game.getStatus()).toBe("Ongoing - X's turn")
     })
   })
 
@@ -63,7 +63,7 @@ describe('Core TicTacToe tests', () => {
         ['', 'X', ''],
         ['X', '', 'X']
       ])
-      expect(game.playStatus()).toBe('Finished - O is the winner!')
+      expect(game.getStatus()).toBe('Finished - O is the winner!')
     })
 
     it('Detects a diagonal win', () => {
@@ -78,7 +78,7 @@ describe('Core TicTacToe tests', () => {
         ['', 'X', ''],
         ['', '', 'X']
       ])
-      expect(game.playStatus()).toBe('Finished - X is the winner!')
+      expect(game.getStatus()).toBe('Finished - X is the winner!')
     })
 
   })
