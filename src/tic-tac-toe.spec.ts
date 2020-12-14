@@ -17,7 +17,8 @@ describe('Core TicTacToe tests', () => {
     })
 
     it("Reports the game status as ongoing", () => {
-      expect(game.getStatus()).toBe("Ongoing - X's turn")
+
+      expect(game.getStatus()).toEqual({ isComplete: false, turnPlayer: "X" })
     })
   })
 
@@ -69,7 +70,7 @@ describe('Core TicTacToe tests', () => {
         ['O', 'X', ''],
         ['', 'X', '']
       ])
-      expect(game.getStatus()).toBe('Finished - X is the winner!')
+      expect(game.getStatus()).toEqual({ isComplete: true, winner: "X" })
     })
 
     it('Detects a first row win', () => {
@@ -85,7 +86,7 @@ describe('Core TicTacToe tests', () => {
         ['', 'X', ''],
         ['X', '', 'X']
       ])
-      expect(game.getStatus()).toBe('Finished - O is the winner!')
+      expect(game.getStatus()).toEqual({ isComplete: true, winner: "O" })
     })
 
     // TODO: fix code so this test passes
@@ -101,7 +102,7 @@ describe('Core TicTacToe tests', () => {
         ["", "X", ""],
         ["", "", "X"],
       ]);
-      expect(game.getStatus()).toBe("Finished - X is the winner!");
+      expect(game.getStatus()).toEqual({ isComplete: true, winner: "X" })
     });
     it("Detects other diagonal win", () => {
       const game = new TicTacToe();
@@ -116,7 +117,7 @@ describe('Core TicTacToe tests', () => {
         ["X", "O", ""],
         ["O", "", ""],
       ]);
-      expect(game.getStatus()).toBe("Finished - O is the winner!");
+      expect(game.getStatus()).toEqual({ isComplete: true, winner: "O" })
     });
 
   })

@@ -23,11 +23,16 @@ interface ITicTacToe {
   /**
    * A helper query to describe the current status of the Tic Tac Toe game.
    * 
-   * It returns a string which either announces the current winner of the game, or specifies that the game is ongoing (and states the current turn player).
+   * It returns an object which has properties indicating whether the game is complete, who has won, whose turn it is.
    */
-  getStatus(): string
+  getStatus(): IGameStatus
 }
 
+interface IGameStatus {
+  isComplete: boolean
+  turnPlayer?: Marker
+  winner?: Marker
+}
 /**
  * A Tic Tac Toe game.
  */
@@ -58,12 +63,12 @@ class TicTacToe implements ITicTacToe {
     return this.board
   }
 
-  getStatus(): string {
+  getStatus(): IGameStatus {
     const winner = this.findWinner()
     if (winner) {
-      return `Finished - ${winner} is the winner!`
+      return { isComplete: true, winner }
     } else {
-      return `Ongoing - ${this.getTurnPlayer()}'s turn`
+      return { isComplete: false, turnPlayer: this.getTurnPlayer() }
     }
   }
 
