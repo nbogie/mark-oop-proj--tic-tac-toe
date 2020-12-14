@@ -36,6 +36,7 @@ You may use any external helper, library, or tool that you feel would benefit yo
 **Your deliverable will be commits of code and documentation in response to chosen items.**
 
 Title | Description | Goal | Estimated difficulty | Bonus
---- | --- | --- | ---
+--- | --- | --- | --- | ---
 **Diagonal wins** | Our Tic Tac Toe game needs to be able to detect when any valid win happens (rows, columns and diagonals). <br /><br /> There is one test written for this, `'Detects a diagonal win'`, but it is currently failing. | Implement a fix so that the game detects diagonal wins and the test passes. | ⭐️ | There isn't a test for column wins yet - add one (and make sure that it passes) to increase the robustness of our tests
 **Print board** | To play the game, users need to be able to check the current board. <br /><br /> The `.getBoard()` method returns the array representation of the board, but our players (with no coding experience) are finding it hard to understand what this means. <br /><br /> It seems that the previous maintainer left a related TODO, under `.printBoard()`. | Complete the `.printBoard()` method to achieve this. | ⭐️ | Document it in the public interface so that it's easy for others to quickly refer to and use
+**Consistent style** | Your team prefers imperative and object-oriented over functional programming. <br /><br /> Currently, there are some functional methods (`.map`, `.filter`, `.reduce`) scattered throughout the code, which team members are finding hard to understand. | Refactor the code to use imperative programming constructs in place of these | ⭐️⭐️⭐️ | -
