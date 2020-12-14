@@ -60,6 +60,11 @@ Install dependencies
 yarn
 ```
 
+Run tests
+```bash
+yarn test
+```
+
 ### To play locally
 Open `ts-node` REPL (prequisite: global installation of `ts-node`; do with `npm install -g ts-node`)
 ```bash
