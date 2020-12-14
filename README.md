@@ -7,11 +7,11 @@
 
 You work for a game development company.
 
-You have inherited a Tic Tac Toe codebase, with some tickets to complete on it (a failing test and some feature requests).
+You have inherited a Tic Tac Toe project that was started during a small internal hackathon, which the company would like to polish up.
 
-The software engineer who was working on the codebase previously has left, so you can't ask them questions.
+The software engineer who developed the codebase has left, so you can't ask them questions...
 
-However, there appear to be some helpful files under `/src`:
+... but there appear to be some helpful files left under `/src`:
 1. `INSTRUCTIONS.md`: a brief guide to setup and installation; and
 2. `tic-tac-toe.ts`: the main code and some documentation;
 3. `tic-tac-toe.spec.ts`: some written tests to accompany the code.
