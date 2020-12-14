@@ -61,8 +61,9 @@ class TicTacToe implements ITicTacToe {
     }
   }
 
+  // TODO: make it easier for players to view the board
   printBoard(): void {
-    console.log(/* TODO */)
+    // log an ASCII representation of the board
   }
 
   /**
@@ -164,7 +165,7 @@ class TicTacToe implements ITicTacToe {
 
   /**
    * A helper query to return a given row in a stylised ASCII format
-   * @param rowNo row number
+   * @param rowNo non-zero based row number
    * @returns string, ASCII representation of row
    */
   rowString(rowNo: number): string {
