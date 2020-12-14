@@ -206,8 +206,7 @@ type Row = [Cell, Cell, Cell]
 type Board = [Row, Row, Row]
 
 /**
- * Represents non-zero based coordinates for
- *  a given board cell.
+ * Represents non-zero based coordinates for a given board cell.
  */
 interface BoardPosition {
   /** Non-zero based row number */
