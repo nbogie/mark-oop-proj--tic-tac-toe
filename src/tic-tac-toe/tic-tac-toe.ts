@@ -1,6 +1,24 @@
+/**
+ * The public interface for the TicTacToe game.
+ */
 interface ITicTacToe {
+  /**
+   * A command that adds a marker for the turn player at coordinates specified, if possible.
+   * 
+   * If the coordinates are already occupied, it ignores the placement.
+   */
   addMarker(position: BoardPosition): void
+
+  /**
+   * A query to read the current state of the Tic Tac Toe board.
+   */
   getBoard(): Board
+
+  /**
+   * A helper query to describe the current status of the Tic Tac Toe game.
+   * 
+   * It returns a string which either announces the current winner of the game, or specifies that the game is ongoing (and states the current turn player).
+   */
   playStatus(): string
 }
 
@@ -22,13 +40,31 @@ class TicTacToe implements ITicTacToe {
     ]
   }
 
+  addMarker(position: BoardPosition): void {
+    if (this.readCell(position) === '') {
+      this.writeCell(position, this.getTurnPlayer())
+    } else {
+      console.log("There's already a marker there - try placing somewhere else!")
+    }
+  }
+
+  getBoard(): Board {
+    return this.board
+  }
+
+  playStatus(): string {
+    const winner = this.findWinner()
+    if (winner) {
+      return `Finished - ${winner} is the winner!`
+    } else {
+      return `Ongoing - ${this.getTurnPlayer()}'s turn`
+    }
+  }
+
   /**
-   * A helper query to heck whether a series of board positions
-   *  are all equal to a given marker.
+   * A helper query to heck whether a series of board positions are all equal to a given marker.
    * 
-   * This is useful, for example, to check whether a player has
-   *  won in a given fashion - pass in an array of the positions
-   *  e.g. for every cell in a row. 
+   * This is useful, for example, to check whether a player has won in a given fashion - pass in an array of the positions e.g. for every cell in a row. 
    * 
    * @param marker The marker to check for equality to
    * @param positions A array of board positions to check
@@ -40,12 +76,9 @@ class TicTacToe implements ITicTacToe {
   }
 
   /**
-   * A helper query that returns either a Marker ('X' or 'O')
-   *  that is deemed to have won, or returns undefined if there
-   *  is no current winner.
+   * A helper query that returns either a Marker ('X' or 'O') that is deemed to have won, or returns undefined if there is no current winner.
    * 
-   * @returns a string Marker if there is a winner;
-   *  undefined otherwise
+   * @returns a string Marker if there is a winner; undefined otherwise
    */
   findWinner(): Marker | undefined {
     const rowWins = [
@@ -80,32 +113,7 @@ class TicTacToe implements ITicTacToe {
   }
 
   /**
-   * A command that adds a marker for the turn player
-   *  at coordinates specified, if possible.
-   * 
-   * If the coordinates are already occupied, it ignores
-   *  the placement.
-   * 
-   * @param param0 Board position to try to play at
-   */
-  addMarker({ row, col }: BoardPosition): void {
-    if (this.readCell({ row, col }) === '') {
-      this.writeCell({ row, col }, this.getTurnPlayer())
-    } else {
-      console.log("There's already a marker there - try placing somewhere else!")
-    }
-  }
-
-  /**
-   * A helper query to encapsulate the board game state
-   */
-  getBoard(): Board {
-    return this.board
-  }
-
-  /**
-   * A helper query to return the marker for the current
-   *  turn player.
+   * A helper query to return the marker for the current turn player.
    * 
    * @returns a string representing the current turn player
    */
@@ -127,22 +135,6 @@ class TicTacToe implements ITicTacToe {
         return acc + markersPlayed.length
       }
     , 0)
-  }
-
-  /**
-   * A helper query to return the play status of the game.
-   * 
-   * @returns a string describing the state of the game,
-   *  either describing whose turn it is or announcing
-   *  the winner.
-   */
-  playStatus(): string {
-    const winner = this.findWinner()
-    if (winner) {
-      return `Finished - ${winner} is the winner!`
-    } else {
-      return `Ongoing - ${this.getTurnPlayer()}'s turn`
-    }
   }
 
   /**
