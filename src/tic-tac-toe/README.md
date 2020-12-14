@@ -42,3 +42,18 @@ game.getBoard()
 game.getStatus()
 // => "Finished - X is the winner!"
 ```
+
+## Usage
+To play locally, run a `ts-node` REPL and load the file.
+
+*Run a `ts-node` REPL*
+```bash
+ts-node
+```
+
+*Load the game code into the REPL*
+```
+> .load src/tic-tac-toe/tic-tac-toe.ts
+```
+
+*You're ready to play!*
