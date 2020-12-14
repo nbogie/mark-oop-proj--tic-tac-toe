@@ -18,7 +18,10 @@ You work for a game development company.
 
 You have inherited a partially complete Tic Tac Toe codebase.
 
-The software engineer who was working on the codebase previously has left, so you can't ask them questions, but there is some documentation in the code.
+The software engineer who was working on the codebase previously has left, so you can't ask them questions, but there is:
+1. `README.md`: a brief example of using; and
+2. some documentation in the code; and
+3. some written tests to accompany the code.
 
 ## Exercise 1: Newcomer Notes
 

@@ -61,6 +61,10 @@ class TicTacToe implements ITicTacToe {
     }
   }
 
+  printBoard(): void {
+    console.log(/* TODO */)
+  }
+
   /**
    * A helper query to heck whether a series of board positions are all equal to a given marker.
    * 
@@ -73,6 +77,17 @@ class TicTacToe implements ITicTacToe {
     return positions.every(position => (
       this.readCell(position) === marker
     ))
+  }
+
+
+  /**
+   * A helper query to return the board in a stylised ASCII format
+   * @returns string, ASCII representation of board
+   */
+  boardString(): string {
+    return this.board.map((val, idx) => (
+      this.rowString(idx + 1)
+    )).join('\n')
   }
 
   /**
@@ -113,17 +128,6 @@ class TicTacToe implements ITicTacToe {
   }
 
   /**
-   * A helper query to return the marker for the current turn player.
-   * 
-   * @returns a string representing the current turn player
-   */
-  getTurnPlayer(): Marker {
-    const isEvenTurn = this.getTurnCount() % 2 === 0
-
-    return isEvenTurn ? 'X' : 'O'
-  }
-
-  /**
    * A helper query to return the turn number of the game.
    * 
    * @returns the number of markers that have been played
@@ -138,6 +142,17 @@ class TicTacToe implements ITicTacToe {
   }
 
   /**
+   * A helper query to return the marker for the current turn player.
+   * 
+   * @returns a string representing the current turn player
+   */
+  getTurnPlayer(): Marker {
+    const isEvenTurn = this.getTurnCount() % 2 === 0
+
+    return isEvenTurn ? 'X' : 'O'
+  }
+
+  /**
    * A helper query to read the board at a given position.
    * 
    * @param param0 Board position to read from
@@ -145,6 +160,15 @@ class TicTacToe implements ITicTacToe {
   readCell({ row, col }: BoardPosition): Cell {
     // subtract one as row and col are not zero-based
     return this.board[row - 1][col - 1]
+  }
+
+  /**
+   * A helper query to return a given row in a stylised ASCII format
+   * @param rowNo row number
+   * @returns string, ASCII representation of row
+   */
+  rowString(rowNo: number): string {
+    return this.board[rowNo - 1].reduce((acc, val) => (acc + (val ? val : ' ') + '|'), '|')
   }
 
   /**

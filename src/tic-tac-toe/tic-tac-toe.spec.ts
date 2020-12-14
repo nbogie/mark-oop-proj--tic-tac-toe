@@ -40,12 +40,18 @@ describe('Core TicTacToe tests', () => {
     })
 
     it("Plays an O on the second marker placed", () => {
-      game.addMarker({ row: 2, col: 3 })
+      game.addMarker({ row: 3, col: 3 })
       expect(game.getBoard()).toEqual([
         ['', '', ''],
-        ['', 'X', 'O'],
-        ['', '', '']
+        ['', 'X', ''],
+        ['', '', 'O']
       ])
+    })
+
+    it('Prints a visual board', () => {
+      const consoleSpy = jest.spyOn(console, 'log')
+      game.printBoard()
+      expect(consoleSpy).toHaveBeenCalledWith("| | | |\n| |X| |\n| | |O|")
     })
   })
 
