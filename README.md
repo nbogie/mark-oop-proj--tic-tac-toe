@@ -9,7 +9,7 @@ You have inherited a Tic Tac Toe codebase, with some tickets to complete on it (
 The software engineer who was working on the codebase previously has left, so you can't ask them questions.
 
 However, there appear to be some helpful files under `/src`:
-1. `README.md`: a brief example of using; and
+1. `INSTRUCTIONS.md`: a brief guide to setup and installation; and
 2. `tic-tac-toe.ts`: the main code and some documentation;
 3. `tic-tac-toe.spec.ts`: some written tests to accompany the code.
 
