@@ -1,4 +1,5 @@
 # Tic Tac Toe
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
 
 ## Context
 
@@ -37,6 +38,7 @@ You may use any external helper, library, or tool that you feel would benefit yo
 
 Title | Description | Goal | Estimated difficulty
 --- | --- | --- | ---
+**Testing for row wins** | Our Tic Tac Toe game needs to 
 **Diagonal wins** | Our Tic Tac Toe game needs to be able to detect when any valid win happens (rows, columns and diagonals). <br /><br /> There is one test written for this, `'Detects a diagonal win'`, but it is currently failing. | Implement a fix so that the game detects diagonal wins and the test passes. | ⭐️
 **Print board** | To play the game, users need to be able to check the current board. <br /><br /> The `.getBoard()` method returns the array representation of the board, but our players (with no coding experience) are finding it hard to understand what this means. <br /><br /> It seems that the previous maintainer left a related TODO, under `.printBoard()`. | Complete the `.printBoard()` method to achieve this, and document it in the public interface so that it's easy for others to quickly refer to and use. | ⭐️
 **Status reporting** | Currently, the `.getStatus()` method returns a descriptive string. <br /><br /> A team-mate wants to use the status information, but she is finding it annoying to have to parse the string. | Rewrite `.getStatus()` so that it instead returns an object of type `{ isComplete: boolean, turnPlayer?: Marker, winner?: Marker }`, and make changes to the associated tests | ⭐️⭐️
