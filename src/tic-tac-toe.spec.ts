@@ -122,3 +122,32 @@ describe('Core TicTacToe tests', () => {
 
   })
 })
+
+describe('Draw', () => {
+
+  it('Detects a draw', () => {
+    const game = new TicTacToe()
+    game.addMarker({ row: 2, col: 2 });
+    game.addMarker({ row: 1, col: 1 })
+    game.addMarker({ row: 1, col: 2 })
+    game.addMarker({ row: 3, col: 2 })
+    game.addMarker({ row: 1, col: 3 })
+    game.addMarker({ row: 3, col: 1 })
+    game.addMarker({ row: 2, col: 1 })
+    game.addMarker({ row: 2, col: 3 })
+    game.addMarker({ row: 3, col: 3 })
+    expect(game.getBoard()).toEqual([
+      ['O', 'X', 'X'],
+      ['X', 'X', 'O'],
+      ['O', 'O', 'X']
+    ])
+
+
+    //expect(game.getStatus()).toEqual({ isComplete: true, isDraw: true })
+  })
+
+  //   ['O1', 'X2', 'X3'],
+  //   ['X4', 'X1', 'O4'],
+  //   ['O3', 'O2', 'X5']
+
+})

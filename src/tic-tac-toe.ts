@@ -23,15 +23,16 @@ interface ITicTacToe {
   /**
    * A helper query to describe the current status of the Tic Tac Toe game.
    * 
-   * It returns an object which has properties indicating whether the game is complete, who has won, whose turn it is.
+   * It returns an object which has properties indicating whether the game is complete, it is a draw, who has won, whose turn it is.
    */
   getStatus(): IGameStatus
 }
 
-interface IGameStatus {
+interface IGameStatus { //TODO: a number of states here shouldn't be representable ideally.
   isComplete: boolean
   turnPlayer?: Marker
-  winner?: Marker
+  winner?: Marker,
+  isDraw?: boolean
 }
 /**
  * A Tic Tac Toe game.
@@ -65,8 +66,11 @@ class TicTacToe implements ITicTacToe {
 
   getStatus(): IGameStatus {
     const winner = this.findWinner()
+    const isDraw = this.isDraw()
     if (winner) {
       return { isComplete: true, winner }
+    } else if (isDraw) {
+      return { isComplete: true, isDraw }
     } else {
       return { isComplete: false, turnPlayer: this.getTurnPlayer() }
     }
@@ -102,6 +106,17 @@ class TicTacToe implements ITicTacToe {
     )).join('\n')
   }
 
+  isBoardFull(): boolean {
+    const allPositions = [[1, 1], [1, 2], [1, 3], [2, 1], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3]];
+    return allPositions.every(([row, col]) => ['X', 'O'].includes(this.readCell({ row, col })))
+  }
+
+  /**
+   * A helper that returns true if the game is a draw, false otherwise.
+   */
+  isDraw(): boolean {
+    return this.isBoardFull() && !this.findWinner();
+  }
   /**
    * A helper query that returns either a Marker ('X' or 'O') that is deemed to have won, or returns undefined if there is no current winner.
    * 
