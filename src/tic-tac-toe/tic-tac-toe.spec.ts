@@ -34,9 +34,9 @@ describe('Core TicTacToe tests', () => {
     })
 
     it('Logs out a message when an occupied cell is attempted', () => {
-      console.log = jest.fn();
+      const consoleSpy = jest.spyOn(console, 'log')
       game.addMarker({ row: 2, col: 2 })
-      expect(console.log).toHaveBeenCalledWith("There's already a marker there - try placing somewhere else!");
+      expect(consoleSpy).toHaveBeenCalledWith("There's already a marker there - try placing somewhere else!");
     })
 
     it("Plays an O on the second marker placed", () => {
