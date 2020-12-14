@@ -1,14 +1,20 @@
 # Tic Tac Toe
 
-Please allocate yourself a **limited and reasonable timeframe** to work on the challenge, which **should not exceed two hours**.
+## Setup
+Clone repository
+```bash
+git clone git@github.com:WeAreAcademy/mark-oop-proj--tic-tac-toe.git
+```
 
-During this timeframe, you are expected to perform the following, in order:
+Change into directory
+```bash
+cd mark-oop-proj--tic-tac-toe
+```
 
-1. read and understand the context
-2. complete exercise 1 (about 25% of your allocated timeframe)
-3. complete exercise 2 (about 75% of your allocated timeframe)
-
-Bonuses may be worked on at any point.
+Install dependencies
+```bash
+yarn
+```
 
 ## Context
 
